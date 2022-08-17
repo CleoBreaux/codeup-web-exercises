@@ -73,6 +73,7 @@ h2, h3 {
 
 #orangecircle {
     display: flex;
+    align-items: center;
 }
 
 section:nth-of-type(1) {
