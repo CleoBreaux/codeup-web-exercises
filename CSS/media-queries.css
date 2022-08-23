@@ -1,0 +1,17 @@
+.nav-links {
+    display:flex;
+   justify-content: space-evenly;
+    float: right;
+    margin: .5em;
+}
+
+.main {
+    flex-grow: 1;
+    flex-direction: column;
+
+}
+
+.sub-section {
+}
+
+.sec
