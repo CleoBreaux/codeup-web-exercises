@@ -6,6 +6,8 @@
 // });
 // $('h1').css('background-color','red'
 
+// above is the code to the selectors exercise
+
 $('#heading').click(function() {
     $('#heading').css('background-color', 'red')
     console.log("My Heading was clicked!");
