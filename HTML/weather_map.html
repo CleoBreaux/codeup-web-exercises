@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Exercise</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="../JS/keys.js"></script>
+    <script src="../JS/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+
+        }
+    </style>
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script src="../JS/keys.js"></script>
+<script src="../JS/mapbox-geocoder-utils.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+
+<script>
+    "use strict";
+
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 10,
+        center: [-77.0369, 38.9072]
+    });
+
+    map.on('style.load', () => {
+        map.setFog({}); // Set the default atmosphere style
+    });
+
+    $.get('https://api.openweathermap.org/data/2.5/forecast', {
+        appid: WEATHER_APP_ID,
+        lat: 38.9072,
+        lon: -77.0369,
+        units: 'imperial'
+    }).done(function(data) {
+        console.log(data);
+
+        // console.log(days);
+
+        // dealing with time
+        // convert API date/time response to JS Date Object
+        // ... new Date(1629461117 * 1000)
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    }).fail(function(error) {
+        console.log(error);
+    });
+
+</script>
+
+</body>
+</html>
