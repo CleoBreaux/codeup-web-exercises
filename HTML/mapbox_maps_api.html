@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Exercise</title>
+    <!-- Mapbox CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="../JS/keys.js"></script>
+    <script src="../JS/mapbox-geocoder-utils.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 700px;
+
+        }
+    </style>
+</head>
+<body>
+
+<h1>My First Mapbox Map!</h1>
+
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+
+<!-- Custom JS -->
+<script>
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [-84.3880, 33.7490]
+    });
+
+    var varsityMarker = new mapboxgl.Marker()
+        .setLngLat([-84.3893, 33.7716])
+        .addTo(map);
+        map.setMaxZoom(24)
+
+    var varsityPopup= new mapboxgl.Popup()
+        .setHTML("<p>The Varsity</p>")
+
+    varsityMarker.setPopup(varsityPopup)
+// End of marker
+
+    var vortexMarker = new mapboxgl.Marker()
+        .setLngLat([-84.3492, 33.7663])
+        .addTo(map);
+        map.setMaxZoom(24)
+
+    var vortexPopup= new mapboxgl.Popup()
+        .setHTML("<p>The Vortex</p>")
+
+
+   vortexMarker.setPopup(vortexPopup)
+   // vortexMarker.click(() => {
+       console.log('marker')
+   // });
+    // end of marker
+
+    var benihanaMarker = new mapboxgl.Marker()
+        // .setLngLat([-84.3915°, 33.8128]);
+        .setLngLat([-84.3915, 33.8128])
+        .addTo(map);
+        map.setMaxZoom(24)
+
+    var benihanaPopup= new mapboxgl.Popup()
+        .setHTML("<p>Benihana</p>")
+
+    benihanaMarker.setPopup(benihanaPopup);
+    // end of marker
+
+    var restaurants = [
+        {
+            name: ' The Varsity',
+            address: 'The Varsity, Atlanta, Ga',
+            message: 'It\'s great!'
+        },
+        {
+            name: 'The Vortex',
+            address: 'The Vortex, Atlanta, Ga',
+            message: 'Too good!'
+        },
+        {
+            name: 'Benihana',
+            address: 'Benihana, Atlanta, Ga',
+            message: 'Awesome!'
+        }
+    ];
+
+
+     function restarauntInfo() {
+       console.log(restaurants[2].name);
+     }
+    map.on("click", restarauntInfo());
+// console.log(restaurants[2].name)
+</script>
+</body>
+</html>

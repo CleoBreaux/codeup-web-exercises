@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Categories</th>
+    </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<div class="container">
+    <div id="row">
+        <table id="productTable">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    $(window).ready(function() {
+        "use strict";
+        $.get("../Data/inventory.json", {
+            limit: 10,
+            offset: 20
+        }).done(function (data) {
+            console.log(data)
+            // do something with the data
+        });
+         function createHTML(data){
+             let html = '';
+             for (let i = 0; i < data.length; i += 1) {
+                 html += '    <article>\n' +
+                     '        <h3>Order #' + orders[i].orderNumber + '</h3>\n' +
+                     '        <dl>\n' +
+                     '            <dt>Title</dt>\n' +
+                     '            <dd>' + data[i].Title + '</dd>\n' +
+                     '            <dt>Quantity</dt>\n' +
+                     '            <dd>' + data[i].Quantity + '</dd>\n ' +
+                     '            <dt>Price</dt>\n' +
+                     '            <dd>' + data[i].price + '</dd>'
+                     '            <dt>Categories</dt>\n' +
+                     '            <dd>' + data[i].categories + '</dd>'
+                     '        </dl>\n'
+                     '    </article>';
+             }
+             return html;
+         }
+         })
+        // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+        // TODO: Take the data from inventory.json and append it to the products table
+        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+        //             its contents and fields
+        //       HINT: You will want to target #insertProducts for your new HTML elements
+
+</script>
+
+
+
+</body>
+
+
+
+</body>
+</html>
