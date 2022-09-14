@@ -1,0 +1,10 @@
+#map {
+    padding-bottom: 10px;
+}
+
+.card {
+    flex-direction: column;
+    justify-content: space-evenly;
+    float: left;
+    padding: 5px;
+}
