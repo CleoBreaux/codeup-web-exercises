@@ -26,7 +26,7 @@
             <h1 class="heading"> Weather App</h1>
             <form id="mapSearch">
                 <input id="userInput" type="text" placeholder="Search for a city" autofocus>
-                <button id="search-btn" type="submit">SUBMIT</button>
+                <button id="search-btn" type="button">SUBMIT</button>
                 <span class="msg"></span>
             </form>
         </div>
@@ -78,7 +78,8 @@
         <div class="card-body">
             <h5 class="card-title">Friday</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text"></p>
+<!--            <p>Clouds: <span id="clouds"></span></p>-->
         </div>
     </div>
 <!--    end of card-->
@@ -130,15 +131,18 @@
             console.log(result);
             map.setCenter(result);
             map.setZoom(10);
-            let latVar = result[0];
-            let lngVar = result[1];
-            $.get("http://api.openweathermap.org/data/2.5/weather", {
+            let lngVar = result[0];
+            let latVar = result[1];
+            $.get("https://api.openweathermap.org/data/2.5/weather", {
                 APPID: WEATHER_APP_ID,
                 lat:    latVar,
                 lon:   lngVar,
                 units: "imperial"
             }).done(function(data) {
                 console.log('current weather', data);
+                // console.log(data.weather[0].main);
+                // $('#card-body').text(data.weather[0].description);
+                $('.card-text').text(`temp: ${data.main.temp}`);
             });
         })
     })
@@ -151,23 +155,23 @@
     //     })
     // );
 
-    $.get('https://api.openweathermap.org/data/2.5/forecast', {
-        appid: WEATHER_APP_ID,
-        lat: 32.7767,
-        lon: -96.7970,
-        units: 'imperial'
-    }).done(function(data) {
-        console.log(data);
-
-        // console.log(days);
-
-        // dealing with time
-        // convert API date/time response to JS Date Object
-        // ... new Date(1629461117 * 1000)
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-    }).fail(function(error) {
-        console.log(error);
-    });
+    // $.get('https://api.openweathermap.org/data/2.5/forecast', {
+    //     appid: WEATHER_APP_ID,
+    //     lat: 32.7767,
+    //     lon: -96.7970,
+    //     units: 'imperial'
+    // }).done(function(data) {
+    //     console.log(data);
+    //
+    //     // console.log(days);
+    //
+    //     // dealing with time
+    //     // convert API date/time response to JS Date Object
+    //     // ... new Date(1629461117 * 1000)
+    //     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    // }).fail(function(error) {
+    //     console.log(error);
+    // });
 
 
     //Make selector for button that will have onClick event
