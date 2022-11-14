@@ -39,7 +39,7 @@
 
 
 <!--card section-->
-<div class="container">
+<div class="container justify content-center">
 
     <!--    map-->
     <div id='map'></div>
@@ -49,7 +49,7 @@
         <div class="card-body">
             <img id="icon" src="" alt="">
             <h5 class="card-title">Current Weather</h5>
-            <h6 class="card-subtitle mb-2 text-muted" id="date">Card subtitle</h6>
+            <h5 class="card-subtitle mb-2 text-muted" id="city"></h5>
             <p class="card-text" id="temp">Some quick example text to build on the card title and make up the bulk
                 of
                 the card's content.</p>
@@ -62,7 +62,6 @@
         </div>
 
 <!--    end of card-->
-
 
     </div>
 </div>
@@ -129,6 +128,7 @@
                 $('#temp_max').text(`High: ${data.main.temp_max}`);
                 $('#temp_min').text(`Low: ${data.main.temp_min}`);
                 $('#feels_like').text(`Feels Like: ${data.main.feels_like}`);
+                $('#city').text(`${data.name}`);
                 $('#icon').attr('src', "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
             });
         })
