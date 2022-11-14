@@ -12,7 +12,7 @@
     <style>
         #map {
             /* the width and height may be set to any size */
-            width: 100%;
+            width: 60%;
             height: 500px;
 
         }
@@ -36,53 +36,34 @@
             <ul class="cities"></ul>
         </div>
     </section>
-<!--    map-->
-<div id='map'></div>
-<!--    end of map-->
+
 
 <!--card section-->
 <div class="container">
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Monday</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-</div>
-<!--    end of card-->
-        <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Tuesday</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-        </div>
-<!--    end of card-->
+
+    <!--    map-->
+    <div id='map'></div>
+    <!--    end of map-->
+
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Wednesday</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <img id="icon" src="" alt="">
+            <h5 class="card-title">Current Weather</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="date">Card subtitle</h6>
+            <p class="card-text" id="temp">Some quick example text to build on the card title and make up the bulk
+                of
+                the card's content.</p>
+
+            <p class="card-text" id="humidity"></p>
+            <p class="card-text" id="pressure"></p>
+            <p class="card-text" id="temp_max"></p>
+            <p class="card-text" id="temp_min"></p>
+            <p class="card-text" id="feels_like"></p>
         </div>
-    </div>
+
 <!--    end of card-->
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Thursday</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-<!--    end of card-->
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Friday</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text"></p>
-<!--            <p>Clouds: <span id="clouds"></span></p>-->
-        </div>
-    </div>
-<!--    end of card-->
+
+
     </div>
 </div>
 <!--end of container-->
@@ -142,36 +123,42 @@
                 console.log('current weather', data);
                 // console.log(data.weather[0].main);
                 // $('#card-body').text(data.weather[0].description);
-                $('.card-text').text(`temp: ${data.main.temp}`);
+                $('#temp').text(`Current Temperature: ${data.main.temp}`);
+                $('#humidity').text(`Humidity: ${data.main.humidity}`);
+                $('#pressure').text(`Pressure: ${data.main.pressure}`);
+                $('#temp_max').text(`High: ${data.main.temp_max}`);
+                $('#temp_min').text(`Low: ${data.main.temp_min}`);
+                $('#feels_like').text(`Feels Like: ${data.main.feels_like}`);
+                $('#icon').attr('src', "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
             });
         })
     })
 
 
-    // map.addControl(
-    //     new MapboxGeocoder({
-    //         accessToken: mapboxgl.accessToken,
-    //         mapboxgl: mapboxgl
-    //     })
-    // );
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
 
-    // $.get('https://api.openweathermap.org/data/2.5/forecast', {
-    //     appid: WEATHER_APP_ID,
-    //     lat: 32.7767,
-    //     lon: -96.7970,
-    //     units: 'imperial'
-    // }).done(function(data) {
-    //     console.log(data);
-    //
-    //     // console.log(days);
-    //
-    //     // dealing with time
-    //     // convert API date/time response to JS Date Object
-    //     // ... new Date(1629461117 * 1000)
-    //     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-    // }).fail(function(error) {
-    //     console.log(error);
-    // });
+    $.get('https://api.openweathermap.org/data/2.5/forecast', {
+        appid: WEATHER_APP_ID,
+        lat: 32.7767,
+        lon: -96.7970,
+        units: 'imperial'
+    }).done(function(data) {
+        console.log(data);
+
+        // console.log(days);
+
+        // dealing with time
+        // convert API date/time response to JS Date Object
+        // ... new Date(1629461117 * 1000)
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+    }).fail(function(error) {
+        console.log(error);
+    });
 
 
     //Make selector for button that will have onClick event
