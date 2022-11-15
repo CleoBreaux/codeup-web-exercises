@@ -7,8 +7,18 @@
     justify-content: space-evenly;
     float: left;
     padding: 5px;
+    background-color:lightgrey;
+
 }
 
 body{
-    color: dimgrey;
+    background-color: pink;
+}
+
+.top-banner{
+    background-color: lightskyblue;
+}
+
+#mapSearch{
+    background-color: blueviolet;
 }
