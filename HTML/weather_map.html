@@ -47,16 +47,18 @@
         <div id='map'></div>
         <!--    end of map-->
 
+<!--            start of card-->
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <img id="icon" src="" alt="">
+
                 <h4 class="card-title" id="city">Current Weather</h4>
                 <h5 class="card-subtitle mb-2 text-muted" id="date"></h5>
-                <p class="card-text" id="temp">Some quick example text to build on the card title and make up the bulk
-                    of
-                    the card's content.</p>
-
-                <p class="card-text" id="humidity"></p>
+<!--                <p class="card-text" id="temp">Some quick example text to build on the card title and make up the bulk-->
+<!--                    of-->
+<!--                    the card's content.</p>-->
+                <p class="card-text" id="temp"></p>
+                <p class="card-text" id="humidity">&#8457</p>
                 <p class="card-text" id="pressure"></p>
                 <p class="card-text" id="temp_max"></p>
                 <p class="card-text" id="temp_min"></p>
@@ -102,6 +104,20 @@
         units: "imperial"
     }).done(function (data) {
         console.log(data);
+        $('')
+        $('#temp').html(`Current Temperature: ${data.main.temp} &#8457`);
+        $('#humidity').text(`Humidity: ${data.main.humidity}`);
+        $('#pressure').text(`Pressure: ${data.main.pressure}`);
+        $('#temp_max').html(`High: ${data.main.temp_max} &#8457`);
+        $('#temp_min').html(`Low: ${data.main.temp_min} &#8457`);
+        $('#feels_like').html(`Feels Like: ${data.main.feels_like} &#8457`);
+        $('#city').text(`${data.name}`);
+        $('#icon').attr('src', "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
+        $('#date').text(`${new Date().toLocaleDateString('en-us', {
+            weekday: "long",
+            month: "short",
+            day: "numeric"
+        })}`)
     });
 
     // console.log(new Date().toLocaleDateString('en-us', { weekday:"long", month:"short", day:"numeric"}));
@@ -122,14 +138,13 @@
                 units: "imperial"
             }).done(function (data) {
                 console.log('current weather', data);
-                // console.log(data.weather[0].main);
-                // $('#card-body').text(data.weather[0].description);
-                $('#temp').text(`Current Temperature: ${data.main.temp}`);
+                $('')
+                $('#temp').html(`Current Temperature: ${data.main.temp} &#8457`);
                 $('#humidity').text(`Humidity: ${data.main.humidity}`);
                 $('#pressure').text(`Pressure: ${data.main.pressure}`);
-                $('#temp_max').text(`High: ${data.main.temp_max}`);
-                $('#temp_min').text(`Low: ${data.main.temp_min}`);
-                $('#feels_like').text(`Feels Like: ${data.main.feels_like}`);
+                $('#temp_max').html(`High: ${data.main.temp_max} &#8457`);
+                $('#temp_min').html(`Low: ${data.main.temp_min} &#8457`);
+                $('#feels_like').html(`Feels Like: ${data.main.feels_like} &#8457`);
                 $('#city').text(`${data.name}`);
                 $('#icon').attr('src', "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
                 $('#date').text(`${new Date().toLocaleDateString('en-us', {
@@ -156,6 +171,21 @@
         units: 'imperial'
     }).done(function (data) {
         console.log(data);
+        console.log("hello World")
+        $('')
+        $('#temp').html(`Current Temperature: ${data.main.temp} &#8457`);
+        $('#humidity').text(`Humidity: ${data.main.humidity}`);
+        $('#pressure').text(`Pressure: ${data.main.pressure}`);
+        $('#temp_max').html(`High: ${data.main.temp_max} &#8457`);
+        $('#temp_min').html(`Low: ${data.main.temp_min} &#8457`);
+        $('#feels_like').html(`Feels Like: ${data.main.feels_like} &#8457`);
+        $('#city').text(`${data.name}`);
+        $('#icon').attr('src', "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png")
+        $('#date').text(`${new Date().toLocaleDateString('en-us', {
+            weekday: "long",
+            month: "short",
+            day: "numeric"
+        })}`)
 
         // console.log(days);
 
