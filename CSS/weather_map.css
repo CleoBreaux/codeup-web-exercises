@@ -16,9 +16,18 @@ body{
 }
 
 .top-banner{
-    background-color: dimgrey;
+    background-color: lightgrey;
 }
 
 #mapSearch{
-    background-color: dimgrey;
+    background-color: lightgrey;
+    border-radius: 25px;
+}
+
+#search-btn  {
+    border-radius: 25px;
+}
+
+#userInput {
+    border-radius: 25px;
 }
