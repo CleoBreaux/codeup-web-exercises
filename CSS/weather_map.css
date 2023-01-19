@@ -12,13 +12,13 @@
 }
 
 body{
-    background-color: pink;
+    background-color: whitesmoke;
 }
 
 .top-banner{
-    background-color: lightskyblue;
+    background-color: dimgrey;
 }
 
 #mapSearch{
-    background-color: blueviolet;
+    background-color: dimgrey;
 }
